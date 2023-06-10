@@ -24,5 +24,5 @@ if __name__ == "__main__":
             Total = div(a, b)
             print("{} {} {} = {}".format(a, operator, b, Total))
         else:
-            print("Unknown operator. Available operatos: +, -, * and /")
+            print("Unknown operator. Available operators: +, -, * and /")
             sys.exit(1)
