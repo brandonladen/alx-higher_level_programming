@@ -2,6 +2,9 @@
 def safe_print_list(my_list=[], x=0):
     counter = 1
     try:
+        if not my_list:
+            print()
+        return (0)
         for elem in range(x):
             counter += 1
             print("{}".format(my_list[elem]), end="")
