@@ -3,6 +3,8 @@
 
 class Square:
     """ Defines this class """
+
+    
     def __init__(self, size):
         """
         Initialize methode
