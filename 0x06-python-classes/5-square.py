@@ -9,16 +9,18 @@ class Square:
             size (int): Size of square
     """
     def __init__(self, size=0):
+
         """initializes the square
         Args:
             size (int): size of a side of the square
 
         Returns:
-            None
+        None
         """
         self.size = size
 
     def area(self):
+
         """
         set square square area
 
@@ -53,7 +55,7 @@ class Square:
         if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
-                raise ValueError("size must be >= 0")
+            raise ValueError("size must be >= 0")
         else:
             self.__size = value
 
@@ -68,4 +70,4 @@ class Square:
             print()
         else:
             for x in range(self.size):
-                    print("#" * self.size)
+                print("#" * self.size)
