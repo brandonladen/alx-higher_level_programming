@@ -1,0 +1,99 @@
+# The ``3-say_my_name`` module
+==================================
+How to use 3-say_my_name.py
+==================================
+
+This library has one function called ``say_my_name()``
+
+``say_my_name`` is a function that prints;
+``My name is <fist name> <last name>`` without importing
+any module.<first name> and <last name> must be strings.
+
+Importing the function say_my_name.
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Passing a normal string value as both first and last name using double quotes.
+	>>> say_my_name("Brandon", "Laden")
+	My name is Brandon Laden
+
+Passing a normal string value as first name only using double quotes.
+	>>> say_my_name("Brandon")
+	My name is Brandon 
+
+Passing an empty string as both first and last name using double quotes.
+	>>> say_my_name("","")
+	My name is  
+
+Passing an empty string as first name only using double quotes.
+	>>> say_my_name("")
+	My name is  
+
+Passing a string as last name only using double quotes.
+	>>> say_my_name("","Laden")
+	My name is  Laden
+
+Passing an integer as a string for both first and last name using double quotes.
+        >>> say_my_name("66555","428")
+        My name is 66555 428
+
+Passing an integer as a string for first name only using double quotes.
+        >>> say_my_name("232233")
+        My name is 232233 
+
+Passing an integer as astring for the last name only using double quotes.
+        >>> say_my_name("","4565")
+        My name is  4565
+
+Passing a string using single quotes.
+	>>> say_my_name('Brandon', 'laden')
+	My name is Brandon laden
+
+Passing a normal string value as first name only using single quotes.
+	>>> say_my_name('Brandon')
+	My name is Brandon 
+
+Passing an empty string as both first and last name using single quotes.
+	>>> say_my_name('','')
+	My name is  
+
+Passing an empty string as first name only using single quotes.
+	>>> say_my_name('')
+	My name is  
+
+Passing an integer as a string for both first and last name using single quotes.
+	>>> say_my_name('66555','428')
+	My name is 66555 428
+
+Passing an integer as a string for first name only using single quotes.
+	>>> say_my_name('232233')
+	My name is 232233 
+
+Passing an integer as astring for the last name only using single quotes.
+	>>> say_my_name('','4565')
+	My name is  4565
+
+Exceptions
+==========
+Passing a non string as a first name using double quotes.
+	>>> say_my_name(34,"Laden")
+	Traceback (most recent call last):
+	    ...
+	TypeError: first_name must be a string
+
+Passing a non string as a second name using double quotes.
+	>>> say_my_name("Brandon", 45.3)
+	Traceback (most recent call last):
+	    ...
+	TypeError: last_name must be a string
+
+Passing a non string as a first name using single quotes.
+        >>> say_my_name(34,'Laden')
+        Traceback (most recent call last):
+            ...
+        TypeError: first_name must be a string
+
+Passing a non string as a first name using single quotes.
+        >>> say_my_name('Brandon',45.7)
+        Traceback (most recent call last):
+            ...
+        TypeError: last_name must be a string

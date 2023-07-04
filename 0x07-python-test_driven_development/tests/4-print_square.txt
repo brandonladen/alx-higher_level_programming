@@ -1,0 +1,82 @@
+# The ``4-print_square.py`` module
+======================================
+How to use 4-print_square.py
+======================================
+
+This library has one function called ``print_square()``
+
+``print_square`` is a function that prints a square 
+with the character #, without importing any module.
+
+Importing the function print_square.
+	>>> print_square = __import__('4-print_square').print_square
+
+Passing a normal integer.
+	>>> print_square(3)
+	###
+	###
+	###
+
+passing a big integer.
+	>>> print_square(10)
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+
+Passing a small integer.
+	>>> print_square(0)
+
+Passing a small integer,
+	>>> print_square(1)
+	#
+
+Exceptions
+==========
+Passing size of type string using double quotes.
+	>>> print_square("34")
+	Traceback (most recent call last):
+	    ...
+	TypeError: size must be an integer
+
+Passing size of type float.
+	>>> print_square(44.32)
+	Traceback (most recent call last):
+	    ...
+	TypeError: size must be an integer
+
+Passing size of type list.
+	>>> print_square([22])
+	Traceback (most recent call last):
+	    ...
+	TypeError: size must be an integer
+
+Passing size of type set.
+	>>> print_square({2})
+	Traceback (most recent call last):
+	    ...
+	TypeError: size must be an integer
+
+Passing size of type float and less than 0.
+	>>> print_square(-0.34)
+	Traceback (most recent call last):
+	    ...
+	TypeError: size must be an integer
+
+Passing size of type integer, less than 0.
+	>>> print_square(-21)
+	Traceback (most recent call last):
+	    ...
+	ValueError: size must be >= 0
+
+Passing size of type string using single quotes.
+	>>> print_square('21')
+	Traceback (most recent call last):
+	    ...
+	TypeError: size must be an integer
