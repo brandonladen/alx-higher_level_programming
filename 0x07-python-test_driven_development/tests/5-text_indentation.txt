@@ -21,16 +21,18 @@ Passing a string with a fullstop.
 Passing a string with question mark.
 	>>> text_indentation("Who are you ? Identify yourself")
 	Who are you ?
-	Identify yourself 
+	<BLANKLINE>
+	Identify yourself
 
 Passing a string with a full colon.
 	>>> text_indentation("Person : traits")
 	Person :
+	<BLANKLINE>
 	traits
 
 Passing a string.
 	>>> text_indentation("Hello world")
-	Hello world 
+	Hello world
 
 Exception
 =========
