@@ -12,11 +12,25 @@ without importing any module.
 Importing the function text_indentation.
 	>>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Passing a string.
+Passing a string with a fullstop.
 	>>> text_indentation("Hello World. I am using python")
 	Hello World.
 	<BLANKLINE>
 	I am using python
+
+Passing a string with question mark.
+	>>> text_indentation("Who are you ? Identify yourself")
+	Who are you ?
+	Identify yourself 
+
+Passing a string with a full colon.
+	>>> text_indentation("Person : traits")
+	Person :
+	traits
+
+Passing a string.
+	>>> text_indentation("Hello world")
+	Hello world 
 
 Exception
 =========
