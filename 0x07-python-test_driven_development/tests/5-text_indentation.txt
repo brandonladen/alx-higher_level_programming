@@ -1,0 +1,39 @@
+# The ``5-text_indentation.py`` module
+=========================================
+How to use 5-text_indentation.py
+=========================================
+
+This library has one function called ``text_indentation()``
+
+``text_indentation`` is a function that prints a text with 
+2 new lines after each of these characters: '.', '?'and ':'
+without importing any module.
+
+Importing the function text_indentation.
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Passing a string.
+	>>> text_indentation("Hello World. I am using python")
+	Hello World.
+	<BLANKLINE>
+	I am using python
+
+Exception
+=========
+Passing an integer.
+	>>> text_indentation(234434)
+	Traceback (most recent call last):
+	    ...
+	TypeError: text must be a string
+
+Passing a list.
+	>>> text_indentation(["Hello world"])
+	Traceback (most recent call last):
+	    ...
+	TypeError: text must be a string
+
+Passing a tuple.
+	>>> text_indentation(("Hello, world",))
+	Traceback (most recent call last):
+	    ...
+	TypeError: text must be a string
