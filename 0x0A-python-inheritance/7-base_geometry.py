@@ -11,7 +11,6 @@ class BaseGeometry:
             Public instance  that raises an exception
         """
         raise Exception("area() is not implemented")
-        
     def integer_validator(self, name, value):
         """
             Public instance that  validates value
