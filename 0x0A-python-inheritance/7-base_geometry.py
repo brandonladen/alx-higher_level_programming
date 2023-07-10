@@ -2,7 +2,7 @@
 """Defines ```BaseGeometry``` class"""
 
 
-class BaseGeometry:
+class BaseGeometry():
     """
         A class with one function
     """
