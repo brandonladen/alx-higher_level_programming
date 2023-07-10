@@ -7,7 +7,7 @@ class Square(Rectangle):
     """A class that inherits from class Rectangle"""
     
     def __init__(self,size):
-        """Initializing a square"""
+        """Initializing a square """
         
         self.integer_validator("size", size)
         super().__init__(size, size)
