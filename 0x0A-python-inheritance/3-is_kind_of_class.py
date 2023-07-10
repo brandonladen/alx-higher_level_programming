@@ -5,7 +5,7 @@
 def is_kind_of_class(obj, a_class):
     """
     Args:
-        obj: The object to check 
+        obj: The object to check
         a_class: The class for object to compare
     """
     if isinstance(obj, a_class):
