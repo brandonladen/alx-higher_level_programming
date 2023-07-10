@@ -8,7 +8,7 @@ class BaseGeometry:
     """
     def area(self):
         """
-            Public instance that raises an exception
+            Public instance  that raises an exception
         """
         raise Exception("area() is not implemented")
         
