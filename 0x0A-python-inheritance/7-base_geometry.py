@@ -14,7 +14,7 @@ class BaseGeometry:
         
     def integer_validator(self, name, value):
         """
-            Public instance that validates value
+            Public instance that  validates value
             Args:
                 name: Is always a string
                 value: To be validated
