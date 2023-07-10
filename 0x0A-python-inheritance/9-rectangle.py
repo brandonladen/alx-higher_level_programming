@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 """Defines ``Rectangle`` class"""
-
-
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
-
-
 
 
 class Rectangle(BaseGeometry):
@@ -16,7 +12,6 @@ class Rectangle(BaseGeometry):
         self.__width = width
         self.integer_validator("height", height)
         self.__height = height
-    
     def area(self):
         """ Return the area of a triangle """
         return self.__height * self.__width
