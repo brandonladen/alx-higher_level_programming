@@ -9,6 +9,4 @@ class MyList(list):
         Args:
             my_list: list to sort in ascending order
         """
-        my_list = self[:]
-        my_list.sort()
-        print(my_list)
+        print(sorted(self))
