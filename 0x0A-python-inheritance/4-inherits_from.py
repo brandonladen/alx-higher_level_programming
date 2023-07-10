@@ -5,7 +5,7 @@
 def inherits_from(obj, a_class):
     """
     Args:
-        obj: The object to check 
+        obj: The object to check
         a_class: The class for object to compare
     """
     if isinstance(type(obj), a_class) and type(oj) != a_class:
