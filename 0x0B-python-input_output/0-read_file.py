@@ -9,5 +9,5 @@ def read_file(filename=""):
         Returns:
             Prints the text to the standard output
     """
-    with open(filename, mode="r", encoding="utf-8") as f:
-            print(f.read())
+    with open(filename, "r", encoding="utf-8") as f:
+            print(f.read(), end="")
