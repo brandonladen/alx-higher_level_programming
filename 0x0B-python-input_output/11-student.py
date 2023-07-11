@@ -23,8 +23,10 @@ class Student:
                 if key in attrs:
                     name[key] = value
             return name
+
     def reload_from_json(self, json):
         """
         """
+
         for i, j in json.items():
             self.__dict__[i] = j

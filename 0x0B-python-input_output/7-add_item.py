@@ -8,7 +8,7 @@ load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 open("add_item.json", "a")
 try:
-    l = load_from_json_file("add_item.json")
+    lis = load_from_json_file("add_item.json")
 except ValueError:
-    l = []
-save_to_json_file(l + sys.argv[1:], "add_item.json")
+    lis = []
+save_to_json_file(lis + sys.argv[1:], "add_item.json")
