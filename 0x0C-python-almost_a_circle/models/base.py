@@ -2,10 +2,12 @@
 """Defines base model"""
 import json
 
+
 class Base:
     """
     """
     __nb_objects = 0
+
     def __init__(self, id=None):
         if id is not None:
             self.id = id
@@ -13,7 +15,6 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
-            
     @staticmethod
     def to_json_string(list_dictionaries):
         """
@@ -61,7 +62,7 @@ class Base:
             loads list of intances from JSON file
         """
         try:
-             with open(cls.__name__ + ".json", "r") as f:
+            with open(cls.__name__ + ".json", "r") as f:
                 return [cls.create(**dictionary) for
                         dictionary in cls.from_json_string(f.read())]
         except FileNotFoundError:

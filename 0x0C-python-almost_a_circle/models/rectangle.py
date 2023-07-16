@@ -106,7 +106,7 @@ class Rectangle(Base):
         space = " "
         for space_y in range(self.__y):
             print()
-        
+
         for height in range(self.__height):
             print(space * self.__x, end="")
             print("#" * self.__width)
@@ -115,7 +115,8 @@ class Rectangle(Base):
         """
             String information of the rectangle
         """
-        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id, self.__x, self.__y, self.__width, self.__height)
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+                self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
         """
@@ -140,4 +141,5 @@ class Rectangle(Base):
                 setattr(self, arg, kwargs.get(arg))
 
     def to_dictionary(self):
-        return {'id': self.id, 'height': self.height, 'width': self.width, 'x': self.x, 'y': self.y}
+        return {'id': self.id, 'height': self.height, 'width': self.width,
+                'x': self.x, 'y': self.y}
