@@ -135,5 +135,6 @@ class Rectangle(Base):
                 setattr(self, arg, kwargs.get(arg))
 
     def to_dictionary(self):
-        return {'id': self.id, 'height': self.height, 'width': self.width,
-                'x': self.x, 'y': self.y}
+        """the dictionary representation"""
+        return {"id": self.id, "width": self.__width, "height": self.__height,
+                "x": self.__x, "y": self.__y}
