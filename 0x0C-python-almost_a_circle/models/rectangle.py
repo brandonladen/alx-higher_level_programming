@@ -25,16 +25,16 @@ class Rectangle(Base):
         return self.__width
 
     @width.setter
-    def width(self, width):
+    def width(self, value):
         """
             width setter
         """
-        if not isinstance(width, int):
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
-        elif width <= 0:
+        elif value <= 0:
             raise ValueError("width must be > 0")
         else:
-            self.__width = width
+            self.__width = value
 
     @property
     def height(self):
@@ -44,16 +44,16 @@ class Rectangle(Base):
         return self.__height
 
     @height.setter
-    def height(self, height):
+    def height(self, value):
         """
             height setter
         """
-        if not isinstance(height, int):
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
-        elif height <= 0:
+        elif value <= 0:
             raise ValueError("height must be > 0")
         else:
-            self.__height = height
+            self.__height = value
 
     @property
     def x(self):
@@ -63,16 +63,16 @@ class Rectangle(Base):
         return self.__x
 
     @x.setter
-    def x(self, x):
+    def x(self, value):
         """
             x setter
         """
-        if not isinstance(x, int):
+        if not isinstance(value, int):
             raise TypeError("x must be an integer")
-        elif x < 0:
+        elif value < 0:
             raise ValueError("x must be >= 0")
         else:
-            self.__x = x
+            self.__x = value
 
     @property
     def y(self):
@@ -82,16 +82,16 @@ class Rectangle(Base):
         return self.__y
 
     @y.setter
-    def y(self, y):
+    def y(self, value):
         """
             y setter
         """
-        if not isinstance(y, int):
+        if not isinstance(value, int):
             raise TypeError("y must be an integer")
-        elif y < 0:
+        elif value < 0:
             raise ValueError("y must be >= 0")
         else:
-            self.__y = y
+            self.__y = value
 
     def area(self):
         """
