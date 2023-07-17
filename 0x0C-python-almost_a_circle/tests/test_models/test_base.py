@@ -1,84 +1,66 @@
 #!/usr/bin/python3
-"""
-Contains tests for Base class
-"""
+"""test Base class"""
 
 import unittest
-import json
-from models import base
-Base = base.Base
+import pep8
+import os
+from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
 
 
-class TestBase(unittest.TestCase):
-    """check functionality of Base class"""
-    def _too_many_args(self):
-        """testing too many args to init"""
-        with self.assertRaises(TypeError):
-            b = Base(1, 1)
+class Base_Tests(unittest.TestCase):
+    """tests for Base class"""
 
-    def _no_id(self):
-        """Testing id as None"""
-        b = Base()
-        self.assertEqual(b.id, 1)
+    def test_pep8(self):
+        """check for pep8"""
+        pep8style = pep8.StyleGuide(quite=True)
+        result = pep8style.check_files(['./models/base.py'])
+        self.assertEqual(result.total_errors, 0)
 
-    def _id_set(self):
-        """Testing id as not None"""
-        b98 = Base(98)
-        self.assertEqual(b98.id, 98)
+    def Test_BaseMethods(self):
+        """check for methods"""
+        self.assertTrue(Base.__init__.__doc__)
+        self.assertTrue(Base.to_json_string.__doc__)
+        self.assertTrue(Base.save_to_file.__doc__)
+        self.assertTrue(Base.from_json_string.__doc__)
+        self.assertTrue(Base.create.__doc__)
+        self.assertTrue(Base.load_from_file.__doc__)
 
-    def _no_id_after_set(self):
-        """Testing id as None after not None"""
-        b2 = Base()
-        self.assertEqual(b2.id, 2)
+    def test_BaseId(self):
+        """checks for a new object id"""
+        b1 = Base()
+        self.assertEqual(b1.id, 1)
+        b2 = Base(-2)
+        self.assertEqual(b2.id, -2)
+        b3 = Base(12)
+        self.assertEqual(b3.id, 12)
+        b4 = Base("four")
+        self.assertEqual(b4.id, "four")
+        b5 = Base([1, 2])
+        self.assertEqual(b5.id, [1, 2])
 
-    def _nb_private(self):
-        """Testing nb_objects as a private instance attribute"""
-        b = Base(3)
-        with self.assertRaises(AttributeError):
-            print(b.nb_objects)
-        with self.assertRaises(AttributeError):
-            print(b.__nb_objects)
+    def test_to_json(self):
+        """test to_json string task"""
+        r1 = Rectangle(10, 7, 2, 8)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        dicti = {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
+        json_dict = '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]'
+        self.assertEqual(type(dictionary), dict)
+        self.assertEqual(type(json_dictionary), str)
 
-    def _to_json_string(self):
-        """Testing regular to json string"""
-        Base._Base__nb_objects = 0
-        d1 = {"id": 9, "width": 5, "height": 6, "x": 7, "y": 8}
-        d2 = {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}
-        json_s = Base.to_json_string([d1, d2])
-        self.assertTrue(type(json_s) is str)
-        d = json.loads(json_s)
-        self.assertEqual(d, [d1, d2])
+    def test_save_to_file(self):
+        """test save_to_file task"""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        self.assertTrue(os.path.isfile('Rectangle.json'))
 
-    def _empty_to_json_string(self):
-        """Test for passing empty list"""
-        json_s = Base.to_json_string([])
-        self.assertTrue(type(json_s) is str)
-        self.assertEqual(json_s, "[]")
-
-    def _None_to_json_String(self):
-        """testting None to a json"""
-        json_s = Base.to_json_string(None)
-        self.assertTrue(type(json_s) is str)
-        self.assertEqual(json_s, "[]")
-
-    def _from_json_string(self):
-        """Tests normal from_json_string"""
-        json_str = '[{"id": 9, "width": 5, "height": 6, "x": 7, "y": 8}, \
-{"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}]'
-        json_l = Base.from_json_string(json_str)
-        self.assertTrue(type(json_l) is list)
-        self.assertEqual(len(json_l), 2)
-        self.assertTrue(type(json_l[0]) is dict)
-        self.assertTrue(type(json_l[1]) is dict)
-        self.assertEqual(json_l[0],
-                         {"id": 9, "width": 5, "height": 6, "x": 7, "y": 8})
-        self.assertEqual(json_l[1],
-                         {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0})
-
-    def _frjs_empty(self):
-        """Tests from_json_string  empty string"""
-        self.assertEqual([], Base.from_json_string(""))
-
-    def _frjs_None(self):
-        """Testing from_json_string   none string"""
-        self.assertEqual([], Base.from_json_string(None))
+    def test_from_json(self):
+        """Tests from_json_string task"""
+        st_in = '[{"id": 89, "width": 10, "height": 4},\
+{"id": 7, "width": 1, "height": 7}]'
+        empty_ls = []
+        st_out = Rectangle.from_json_string(st_in)
+        self.assertEqual(len(st_out), 2)
