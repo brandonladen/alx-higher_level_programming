@@ -1,107 +1,54 @@
 #!/usr/bin/python3
-"""
-Test for the Square class
-"""
+"""test Square class"""
 
 import unittest
-import json
-from models import square
+import pep8
+import os
 from models.base import Base
-Square = square.Square
+from models.rectangle import Rectangle
+from models.square import Square
 
 
-class TestSquare(unittest.TestCase):
-    """Test the functionality of the Square class"""
-    @classmethod
-    def setUpClass(cls):
-        """set up the tests"""
-        Base._Base__nb_objects = 0
-        cls.s1 = Square(1)
-        cls.s2 = Square(2, 3)
+class Square_Tests(unittest.TestCase):
+    """tests Square class"""
 
-    def test_id(self):
-        """Test for functioning ID"""
-        self.assertEqual(self.s1.id, 1)
-        self.assertEqual(self.s2.id, 2)
+    def test_pep8(self):
+        """check for pep8"""
+        pep8style = pep8.StyleGuide(quite=True)
+        result = pep8style.check_files(['./models/square.py'])
+        self.assertEqual(result.total_errors, 0)
 
-    def test_size(self):
-        """Test for functioning size"""
-        self.assertEqual(self.s1.size, 1)
-        self.assertEqual(self.s2.size, 2)
-
-    def test_width(self):
-        self.assertEqual(self.s1.width, 1)
-        self.assertEqual(self.s2.width, 2)
-
-    def test_height(self):
-        """Test for functioning height"""
-        self.assertEqual(self.s1.height, 1)
-        self.assertEqual(self.s2.height, 2)
-
-    def test_x(self):
-        """Test for functioning x"""
-        self.assertEqual(self.s1.x, 0)
-        self.assertEqual(self.s2.x, 3)
-
-    def test_y(self):
-        """Test for functioning y"""
-        self.assertEqual(self.s1.y, 0)
-        self.assertEqual(self.s2.y, 0)
-
-    def mandatory_size(self):
-        """Test that width is a mandatory arg"""
-        with self.assertRaises(TypeError):
-            s = Square()
-
-    def size_typeerror(self):
-        """Test non-ints for size"""
+    def test_S_integer_size(self):
+        """integer validator"""
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            s = Square("hello")
+            r = Square("10")
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Square(-10)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Square(0)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            s = Square(True)
+            r = Square({})
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r = Square(10.1)
 
-    def test_x_typeerror(self):
-        """Test non-ints for x"""
+    def test_S_integer_x(self):
+        """integer validator"""
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            s = Square(1, "hello")
-        with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            s = Square(1, True)
-
-    def test_y_typeerror(self):
-        """Test non-ints for y"""
-        with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            s = Square(1, 1, "hello")
-        with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            s = Square(1, 1, True)
-
-    def test_size_valueerror(self):
-        """Test ints <= 0 for size"""
-        with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            s = Square(-1)
-        with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            s = Square(0)
-
-    def test_x_valueerror(self):
-        """Test ints < 0 for x"""
+            r = Square(10, "2")
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
-            s = Square(1, -1)
+            r = Square(10, -2)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Square(10, {})
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r = Square(10, 2.1)
 
-    def test_y_valueerror(self):
-        """Test ints <= 0 for y"""
+    def test_S_integer_y(self):
+        """integer validator"""
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Square(10, 3, "2")
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
-            s = Square(1, 1, -1)
-
-    def test_area(self):
-        """test area"""
-        self.assertEqual(self.s1.area(), 1)
-        self.assertEqual(self.s2.area(), 4)
-
-    def test_area_args(self):
-        """Test too many args for area()"""
-        with self.assertRaises(TypeError):
-            a = self.s1.area(1)
-
-    def test_display_too_many_args(self):
-        """Test display with too many args"""
-        with self.assertRaises(TypeError):
-            self.s1.display(1)
+            r = Square(10, 3, -2)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Square(10, 3, {})
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r = Square(10, 3, 2.1,)
