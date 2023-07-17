@@ -131,8 +131,8 @@ class Rectangle(Base):
                     self.y = arg
                 i += 1
         else:
-            for arg in kwargs:
-                setattr(self, arg, kwargs.get(arg))
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     def to_dictionary(self):
         """the dictionary representation"""
