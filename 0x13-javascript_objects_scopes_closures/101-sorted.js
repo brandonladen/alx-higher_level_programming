@@ -8,4 +8,4 @@ for (const key in dict) {
   }
   nDict[dict[key]].push(key);
 }
-console.log(nDict); 
+console.log(nDict);
