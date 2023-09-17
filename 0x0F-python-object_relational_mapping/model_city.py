@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-""""""
+"""A python script that contains class
+   definition of a City
+"""
 
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey
-from model_state import State
-
-Base = declarative_base()
+from model_state import Base
 
 
 class City(Base):
